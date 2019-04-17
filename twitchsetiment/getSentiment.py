@@ -45,7 +45,7 @@ y_pred = clf.predict(docs_test)
 import csv
 reviews_new = []
 
-with open("../scrapedchat/tfue.csv", 'r', encoding='utf8') as csvFile:
+with open("../scrapedchat/a_seagull.csv", 'r', encoding='utf8') as csvFile:
     reader = csv.reader(csvFile)
     for row in reader:
         reviews_new.append(row[0])
