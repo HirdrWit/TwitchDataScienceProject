@@ -2,7 +2,9 @@ import sklearn
 import pandas as pd
 from sklearn.datasets import load_files
 from sklearn.utils import shuffle
+import timeit
 
+start = timeit.default_timer()
 # Import data
 twitter_train = pd.read_csv("training_data.csv")
 twitter_train = shuffle(twitter_train)
@@ -28,16 +30,19 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 
 docs_train, docs_test, y_train, y_test = train_test_split(
-    twitter_tfidf, twitter_train['rank'], test_size = 0.80, random_state = 1)
+    twitter_tfidf, twitter_train['rank'], train_size=.90, test_size=.1, random_state = 685)
+    
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestRegressor
 
-
-clf = MultinomialNB().fit(docs_train, y_train)
+clf = GradientBoostingClassifier().fit(docs_train, y_train)
 
 y_pred = clf.predict(docs_test)
+stop = timeit.default_timer()
 
+print('Time: ', stop - start)  
 # from joblib import dump, load
 # dump(clf, 'twitchsentiment.chatmodel') 
-# print(sklearn.metrics.accuracy_score(y_test, y_pred))
+print(sklearn.metrics.accuracy_score(y_test, y_pred))
 
 
 #Testing
@@ -70,3 +75,4 @@ for review, category in zip(reviews_new, pred):
 
 print("postive: " + str(positive))
 print("negative: " + str(negative))
+
