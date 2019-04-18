@@ -12,7 +12,7 @@ avgm=datat.Followers_to_Date[(datat['Category']=='male')].mean()
 avgc=datat.Followers_to_Date[(datat['Category']=='corporation')].mean()
 avgg=datat.Followers_to_Date[(datat['Category']=='group')].mean()
 #Creating a new table to hold the Avg follower by category values
-avg = {'Category': ['male','female','corporation','group'], 'Avg_Followers': [avgm,avgf,avgg,avgc]}
+avg = {'Category': ['male','female','corporation','group'], 'Avg_Followers': [avgm,avgf,avgc,avgg]}
 #Converting it to a dataframe
 avgfoll = pd.DataFrame(data=avg)
 
