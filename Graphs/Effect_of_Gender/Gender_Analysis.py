@@ -3,7 +3,7 @@ import pandas as pd
 import math
 
 #Reading in our Twitch Data
-datat=pd.read_csv('Twitch_Data.csv')
+datat=pd.read_csv('../../ScrapedTwitch/twitch.csv')
 #Converting it to a DataFrame
 datat = pd.DataFrame(data=datat)
 #Creating new variables to store the Avg number followers by Category
